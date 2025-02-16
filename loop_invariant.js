@@ -1,22 +1,22 @@
 //  Implementing Insertion Sort algorithm using loop invariant concept.
 // The loop invariant is property of the loop that is true before (and after) each iteration of the loop.
 // Time Complexity: O(n^2)
-function insertion_sort(arr) {
-    for (let i = 1; i < arr.length; i++) {
-      let key = arr[i];
-      let j = i - 1;
-      while (j >= 0 && arr[j] > key) {
-        arr[j + 1] = arr[j];
-        j = j - 1;
-      }
-      arr[j + 1] = key;
+function insertionSort(arrayToSort){
+    for (let currentElementIndex = 1; currentElementIndex < arrayToSort.length; currentElementIndex++) {
+        let currentElement = arrayToSort[currentElementIndex];
+        let previousIndex = currentElementIndex - 1;
+        while (previousIndex >= 0 && arrayToSort[previousIndex] > currentElement) {
+            arrayToSort[previousIndex + 1] = arrayToSort[previousIndex];
+            previousIndex = previousIndex - 1;
+        }
+        arrayToSort[previousIndex + 1] = currentElement;
   
-      console.log(`Iteration ${i}:`, arr);
+        console.log(`Iteration ${currentElementIndex}:`, arrayToSort);
     }
-    return arr;
+    return arrayToSort;
 }
   
-test_array = [12, 11, 13, 5, 6];
-sorting =insertion_sort(test_array);
-console.log("Sorted array:",sorting);
+let testArray = [12, 11, 13, 5, 6];
+let sortedArray = insertionSort(testArray);
+console.log("Sorted array:", sortedArray);
   
