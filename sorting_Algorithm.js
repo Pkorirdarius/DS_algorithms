@@ -43,7 +43,24 @@ function selection_sort(arr){
     }
     return arr;
 }
-// 
+// insertion algorithm
+// The insertion sort algorithm works by building a sorted array one element at a time.
+// The insertion sort algorithm has a time complexity of O(n^2) in the worst case, where n is the number of elements in the array.
+function insertion_sort(arr){
+    let n = arr.length;
+    for(let i = 1; i < n; i++){
+        let key = arr[i];
+        let j = i-1;
+        // reverse the greater sign in the array to change the order of sorting
+        while(j >= 0 && arr[j] > key){
+            arr[j+1] = arr[j];
+            j = j-1;
+        }
+        arr[j+1] = key;
+    }
+    return arr;
+}
+
 
 let message = "Unsorted array is:";
 console.log(message);
