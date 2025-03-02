@@ -148,7 +148,89 @@ function heap_sort(arr) {
     return arr;
 }
 
+// counting sort
+// The counting sort algorithm works by counting the number of occurrences of each element in the array and then using this information to place the elements in the correct order.
+// The counting sort algorithm has a time complexity of O(n + k) in the best and average cases and O(n^2) in the worst case, where n is the number of elements in the array and k is the range of the input.
+function counting_sort(arr) {
+    let max = Math.max(...arr);
+    let min = Math.min(...arr);
+    let count = new Array(max - min + 1).fill(0);
+    for (let i = 0; i < arr.length; i++) {
+        count[arr[i] - min]++;
+    }
+    let sortedIndex = 0;
+    for (let i = 0; i < count.length; i++) {
+        while (count[i] > 0) {
+            arr[sortedIndex++] = i + min;
+            count[i]--;
+        }
+    }
+    return arr;
+}
 
+// radix sort
+// The radix sort algorithm works by sorting the elements in the array based on the individual digits of the elements.
+// The radix sort algorithm has a time complexity of O(nk) in the best and average cases and O(nk) in the worst case, where n is the number of elements in the array and k is the number of digits in the input.
+function radix_sort(arr) {
+    let max = Math.max(...arr);
+    let exp = 1;
+    while (Math.floor(max / exp) > 0) {
+        counting_sort(arr, exp);
+        exp *= 10;
+    }
+    return arr;
+}
+
+// bucket sort
+// The bucket sort algorithm works by dividing the input into a number of buckets, sorting the elements in each bucket, and then concatenating the sorted buckets.
+// The bucket sort algorithm has a time complexity of O(n + k) in the best and average cases and O(n^2) in the worst case, where n is the number of elements in the array and k is the number of buckets.
+
+function bucket_sort(arr, bucketSize = 5) {
+    if (arr.length === 0) {
+        return arr;
+    }
+    let min = Math.min(...arr);
+    let max = Math.max(...arr);
+    let bucketCount = Math.floor((max - min) / bucketSize) + 1;
+    let buckets = new Array(bucketCount);
+    for (let i = 0; i < buckets.length; i++) {
+        buckets[i] = [];
+    }
+    for (let i = 0; i < arr.length; i++) {
+        let index = Math.floor((arr[i] - min) / bucketSize);
+        buckets[index].push(arr[i]);
+    }
+    arr.length = 0;
+    for (let i = 0; i < buckets.length; i++) {
+        insertion_sort(buckets[i]);
+        for (let j = 0; j < buckets[i].length; j++) {
+            arr.push(buckets[i][j]);
+        }
+    }
+    return arr;
+}
+
+// shell sort
+// The shell sort algorithm works by sorting the elements in the array using a sequence of decreasing gaps.
+// The shell sort algorithm has a time complexity of O(n log n) in the best and average cases and O(n^2) in the worst case, where n is the number of elements in the array.
+function shell_sort(arr) {
+    let n = arr.length;
+    for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
+        for (let i = gap; i < n; i++) {
+            let temp = arr[i];
+            let j;
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                arr[j] = arr[j - gap];
+            }
+            arr[j] = temp;
+        }
+    }
+    return arr;
+}
+
+
+
+// unsorted array
 let message = "Unsorted array is:";
 console.log(message);
 const arr = [8,4,5,7,1,3,6,2];
