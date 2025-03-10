@@ -24,3 +24,9 @@ function binarySearch(arr, target) {
     }
     return -1;
 }
+
+// test the function
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const target = 5;
+console.log(binarySearch(arr, target)); // 4
+// The target element 5 is found at index 4 in the sorted array [1, 2, 3, 4, 5, 6, 7, 8, 9]
