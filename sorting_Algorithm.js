@@ -101,6 +101,7 @@ function merge(arr1,arr2){
 // quick sort
 // The quick sort algorithm works by selecting a pivot element from the array, partitioning the array into two subarrays based on the pivot, and then recursively sorting the subarrays.
 // The quick sort algorithm has a time complexity of O(n log n) in the average case and O(n^2) in the worst case, where n is the number of elements in the array.
+// the order of sorting can be changed by changing the pivot element
 function quick_sort(arr){
     if(arr.length <= 1)
         return arr
