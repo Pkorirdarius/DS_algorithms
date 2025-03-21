@@ -1,0 +1,1 @@
+//recursively  splitting the array into two halves

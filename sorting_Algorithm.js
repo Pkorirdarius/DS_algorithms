@@ -185,7 +185,7 @@ function radix_sort(arr) {
 // bucket sort
 // The bucket sort algorithm works by dividing the input into a number of buckets, sorting the elements in each bucket, and then concatenating the sorted buckets.
 // The bucket sort algorithm has a time complexity of O(n + k) in the best and average cases and O(n^2) in the worst case, where n is the number of elements in the array and k is the number of buckets.
-
+// The bucket sort algorithm is particularly useful when the input is uniformly distributed over a range of values.
 function bucket_sort(arr, bucketSize = 5) {
     if (arr.length === 0) {
         return arr;
